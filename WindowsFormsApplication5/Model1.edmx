@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ScoutingTestDbModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=&quot;C:\Users\Software 3.1\Documents\FRC 2017\Scouting\ScoutingTestDb.db&quot;" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AllianceScouting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="game_id" Type="integer" Nullable="false" />
+          <Property Name="team_id" Type="integer" Nullable="false" />
+          <Property Name="alliance_color" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="rank" Type="integer" Nullable="false" />
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GameScouting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="game_id" Type="int" Nullable="false" />
+          <Property Name="red_score" Type="int" Nullable="false" />
+          <Property Name="blue_score" Type="int" Nullable="false" />
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PitScouting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="team_id" Type="int" Nullable="false" />
+          <Property Name="prop_id" Type="int" Nullable="false" />
+          <Property Name="prop_value" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TeamScouting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="game_id" Type="int" Nullable="false" />
+          <Property Name="team_id" Type="int" Nullable="false" />
+          <Property Name="prop_id" Type="int" Nullable="false" />
+          <Property Name="prop_value" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ScoutingTestDbModelStoreContainer">
+          <EntitySet Name="AllianceScouting" EntityType="Self.AllianceScouting" store:Type="Tables" />
+          <EntitySet Name="GameScouting" EntityType="Self.GameScouting" store:Type="Tables" />
+          <EntitySet Name="PitScouting" EntityType="Self.PitScouting" store:Type="Tables" />
+          <EntitySet Name="TeamScouting" EntityType="Self.TeamScouting" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ScoutingTestDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AllianceScouting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="game_id" Type="Int64" Nullable="false" />
+          <Property Name="team_id" Type="Int64" Nullable="false" />
+          <Property Name="alliance_color" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rank" Type="Int64" Nullable="false" />
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="GameScouting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="game_id" Type="Int32" Nullable="false" />
+          <Property Name="red_score" Type="Int32" Nullable="false" />
+          <Property Name="blue_score" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="PitScouting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="team_id" Type="Int32" Nullable="false" />
+          <Property Name="prop_id" Type="Int32" Nullable="false" />
+          <Property Name="prop_value" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="TeamScouting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="game_id" Type="Int32" Nullable="false" />
+          <Property Name="team_id" Type="Int32" Nullable="false" />
+          <Property Name="prop_id" Type="Int32" Nullable="false" />
+          <Property Name="prop_value" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityContainer Name="ScoutingEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AllianceScoutings" EntityType="Self.AllianceScouting" />
+          <EntitySet Name="GameScoutings" EntityType="Self.GameScouting" />
+          <EntitySet Name="PitScoutings" EntityType="Self.PitScouting" />
+          <EntitySet Name="TeamScoutings" EntityType="Self.TeamScouting" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ScoutingTestDbModelStoreContainer" CdmEntityContainer="ScoutingEntities1">
+          <EntitySetMapping Name="AllianceScoutings">
+            <EntityTypeMapping TypeName="ScoutingTestDbModel.AllianceScouting">
+              <MappingFragment StoreEntitySet="AllianceScouting">
+                <ScalarProperty Name="game_id" ColumnName="game_id" />
+                <ScalarProperty Name="team_id" ColumnName="team_id" />
+                <ScalarProperty Name="alliance_color" ColumnName="alliance_color" />
+                <ScalarProperty Name="rank" ColumnName="rank" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GameScoutings">
+            <EntityTypeMapping TypeName="ScoutingTestDbModel.GameScouting">
+              <MappingFragment StoreEntitySet="GameScouting">
+                <ScalarProperty Name="game_id" ColumnName="game_id" />
+                <ScalarProperty Name="red_score" ColumnName="red_score" />
+                <ScalarProperty Name="blue_score" ColumnName="blue_score" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PitScoutings">
+            <EntityTypeMapping TypeName="ScoutingTestDbModel.PitScouting">
+              <MappingFragment StoreEntitySet="PitScouting">
+                <ScalarProperty Name="team_id" ColumnName="team_id" />
+                <ScalarProperty Name="prop_id" ColumnName="prop_id" />
+                <ScalarProperty Name="prop_value" ColumnName="prop_value" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeamScoutings">
+            <EntityTypeMapping TypeName="ScoutingTestDbModel.TeamScouting">
+              <MappingFragment StoreEntitySet="TeamScouting">
+                <ScalarProperty Name="game_id" ColumnName="game_id" />
+                <ScalarProperty Name="team_id" ColumnName="team_id" />
+                <ScalarProperty Name="prop_id" ColumnName="prop_id" />
+                <ScalarProperty Name="prop_value" ColumnName="prop_value" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

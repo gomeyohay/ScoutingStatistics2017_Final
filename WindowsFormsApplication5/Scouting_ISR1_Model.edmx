@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Scouting_ISR1_Model.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=D:\Scouting2017\ISR1\Scouting_ISR1.db" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="Scouting_ISR1_ModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Scouting_ISR1_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AllianceScouting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="game_id" Type="Int64" Nullable="false" />
+          <Property Name="team_id" Type="Int64" Nullable="false" />
+          <Property Name="alliance_color" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rank" Type="Int64" Nullable="false" />
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="scouter_name" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GameScouting">
+          <Key>
+            <PropertyRef Name="game_id" />
+          </Key>
+          <Property Name="game_id" Type="Int32" Nullable="false" />
+          <Property Name="red_score" Type="Int32" Nullable="false" />
+          <Property Name="blue_score" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PhoneList">
+          <Key>
+            <PropertyRef Name="PhoneId" />
+          </Key>
+          <Property Name="PhoneId" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PitScouting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="team_id" Type="Int32" Nullable="false" />
+          <Property Name="prop_id" Type="Int32" Nullable="false" />
+          <Property Name="prop_value" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="PitScoutingProp">
+          <Key>
+            <PropertyRef Name="prop_id" />
+          </Key>
+          <Property Name="prop_id" Type="Int64" Nullable="false" />
+          <Property Name="prop_description" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prop_style" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prop_type" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="regional_table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="regional" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="TeamScouting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="game_id" Type="Int32" Nullable="false" />
+          <Property Name="team_id" Type="Int32" Nullable="false" />
+          <Property Name="prop_id" Type="Int32" Nullable="false" />
+          <Property Name="prop_value" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="TeamScoutingProp">
+          <Key>
+            <PropertyRef Name="prop_id" />
+          </Key>
+          <Property Name="prop_id" Type="Int64" Nullable="false" />
+          <Property Name="prop_desc" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prop_style" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prop_type" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Scouting_ISR1_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AllianceScoutings" EntityType="Self.AllianceScouting" />
+          <EntitySet Name="GameScoutings" EntityType="Self.GameScouting" />
+          <EntitySet Name="PhoneLists" EntityType="Self.PhoneList" />
+          <EntitySet Name="PitScoutings" EntityType="Self.PitScouting" />
+          <EntitySet Name="PitScoutingProps" EntityType="Self.PitScoutingProp" />
+          <EntitySet Name="regional_table" EntityType="Self.regional_table" />
+          <EntitySet Name="TeamScoutings" EntityType="Self.TeamScouting" />
+          <EntitySet Name="TeamScoutingProps" EntityType="Scouting_ISR1_Model.TeamScoutingProp" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Scouting_ISR1_ModelStoreContainer" CdmEntityContainer="Scouting_ISR1_Entities">
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
