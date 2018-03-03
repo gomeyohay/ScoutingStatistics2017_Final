@@ -200,19 +200,25 @@ namespace WindowsFormsApplication5
                     }
                 }
 
-                for (int i = key_array[not_null+1]; i < (key_array[not_null + 1] + Super_Scouter_Props-1); index++, i++)
+                if (key_array[not_null + 1] < (last_props-3))
                 {
-                    String Prop_val;
-                    if (game_data.TryGetValue(i, out Prop_val))
+                    for (int i = key_array[not_null + 1]; i < (key_array[not_null + 1] + Super_Scouter_Props - 1); index++, i++)
                     {
-                        game_data_array[index] = Prop_val;
-                    }
-                    else
-                    {
-                        game_data_array[index] = null;
+                        String Prop_val;
+                        if (game_data.TryGetValue(i, out Prop_val))
+                        {
+                            game_data_array[index] = Prop_val;
+                        }
+                        else
+                        {
+                            game_data_array[index] = null;
+                        }
                     }
                 }
-
+                else
+                {
+                    index += 4;
+                }
                 for (int i = last_props - 1; i < last_props+2; i++,index++)
                 {
                     String Prop_val;
